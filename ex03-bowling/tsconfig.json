@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
-        "module": "system",
+        "module": "commonjs",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "outFile": "dist/ex03.js",
         "sourceMap": true
     },
+    "moduleResolution": "node", 
     "include": [
         "src/**/*"
     ],
