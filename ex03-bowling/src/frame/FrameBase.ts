@@ -1,6 +1,8 @@
-import { Frame } from "../frame";
+import Frame from "../Frame";
+import Roll from "../Roll";
+import Sequence from "sequency";
 
-export abstract class FrameBase implements Frame {
+export default abstract class FrameBase implements Frame {
     nextFrame : Frame;
 
     setNextFrame(frame : Frame) {
@@ -13,6 +15,7 @@ export abstract class FrameBase implements Frame {
         } 
     }
 
+    abstract rollStream() : Sequence<Roll>;
     abstract getScore() : number;
     abstract toFormattedString() : string;
 }

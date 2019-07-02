@@ -25,8 +25,12 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
+    "@types/lodash": "^4.14.135",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "sequency": "^0.19.2"
   }
 }

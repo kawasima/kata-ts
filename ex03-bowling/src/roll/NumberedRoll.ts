@@ -1,6 +1,6 @@
-import { Roll } from '../roll';
+import Roll from '../Roll';
 
-export class NumberedRoll implements Roll {
+export default class NumberedRoll implements Roll {
     numOfKnockedOutPins : number;
 
     constructor(numOfKnockedOutPins : number) {
