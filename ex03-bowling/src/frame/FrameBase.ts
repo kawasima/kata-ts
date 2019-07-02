@@ -1,8 +1,8 @@
-import { Frame } from "../Frame";
-import { Roll } from "../Roll";
+import Frame from "../Frame";
+import Roll from "../Roll";
 import Sequence from "sequency";
 
-export abstract class FrameBase implements Frame {
+export default abstract class FrameBase implements Frame {
     nextFrame : Frame;
 
     setNextFrame(frame : Frame) {

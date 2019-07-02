@@ -1,6 +1,6 @@
-import { Roll } from '../roll';
+import Roll from '../Roll';
 
-export class StrikeRoll implements Roll {
+export default class StrikeRoll implements Roll {
     getNumOfKnockedOutPins() : number {
         return 10;
     }

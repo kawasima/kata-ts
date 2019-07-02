@@ -1,7 +1,7 @@
-import { Roll } from './Roll';
-import { Sequence }  from 'sequency';
+import Roll from './Roll';
+import Sequence  from 'sequency';
 
-export interface Frame {
+export default interface Frame {
     getScore(): number;
     getNextFrame(): Frame | void;
     rollStream(): Sequence<Roll>;

@@ -1,6 +1,6 @@
-import { Frame } from "./Frame";
+import Frame from "./Frame";
 
-export class Line {
+export default class Line {
     frames: Array<Frame>;
 
     constructor(frames : Array<Frame>) {

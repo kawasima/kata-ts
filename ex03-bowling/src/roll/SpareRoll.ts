@@ -1,6 +1,6 @@
-import { NumberedRoll } from "./NumberedRoll";
+import NumberedRoll from "./NumberedRoll";
 
-export class SpareRoll extends NumberedRoll {
+export default class SpareRoll extends NumberedRoll {
     constructor(numOfKnockedOutPins : number) {
         super(numOfKnockedOutPins);
     }
