@@ -59,6 +59,7 @@ const DateRange = z.object({
 })
 type DateRange = z.infer<typeof DateRange>
 
+// 時間帯の定義
 const HourRange = z.object({
     from: z.number().int().min(0).max(23),
     to: z.number().int().min(0).max(23),
@@ -67,6 +68,7 @@ const HourRange = z.object({
 })
 type HourRange = z.infer<typeof HourRange>
 
+// DateRangeが時間帯に入っているかどうか?
 const dateIn = (std: HourRange, given: DateRange): boolean => {
     const offset = std.to <= given.from.getHours() ? 1 : 0
     const stdFrom = new Date(given.from.getFullYear(), given.from.getMonth(), given.from.getDate() + offset, std.from, 0, 0)
@@ -74,6 +76,7 @@ const dateIn = (std: HourRange, given: DateRange): boolean => {
     return given.from.getTime() >= stdFrom.getTime() && given.to.getTime() <= stdTo.getTime()
 }
 
+// 朝夕割引
 const morning = HourRange.parse({ from: 6, to: 9})
 const evening = HourRange.parse({ from: 17, to: 20})
 const discountInMorningOrEvening = DiscountRule.parse({
@@ -92,6 +95,8 @@ const discountInMorningOrEvening = DiscountRule.parse({
         }
     }
 })
+
+// 深夜割引
 const midnight = HourRange.parse({from: 0, to: 4})
 const discountAtMidnight = DiscountRule.parse({
     isApplicable: (drive: HighwayDrive): boolean => dateIn(
@@ -100,6 +105,8 @@ const discountAtMidnight = DiscountRule.parse({
     ),
     discount: (drive: HighwayDrive) => 30,
 })
+
+// 休日割引
 const discountOnHoliday = DiscountRule.parse({
     isApplicable: (drive: HighwayDrive) =>
         (isHoliday(drive.enteredAt) && isHoliday(drive.exitedAt))
@@ -108,12 +115,14 @@ const discountOnHoliday = DiscountRule.parse({
     discount: (drive: HighwayDrive) => 30,
 }) 
 
+// 割引ルールたち
 const rules: DiscountRule[] = [
     discountInMorningOrEvening,
     discountAtMidnight,
     discountOnHoliday,
 ]
 
+// 複数のルールから割引率を計算する
 export const calcDiscount: CalcDiscount = (drive: HighwayDrive) =>
     rules.filter(rule => rule.isApplicable(drive))
         .map(rule => rule.discount(drive))
