@@ -35,7 +35,7 @@ test("平日朝夕割30%", () => {
         enteredAt: new Date("2023-04-24T06:00:00+09:00"),
         exitedAt: new Date("2023-04-24T07:00:00+09:00")
     })
-    expect(calcDiscount2(drive)).toBe(30);
+    expect(calcDiscount(drive)).toBe(30);
 })
 
 test("平日朝夕割50%", () => {
