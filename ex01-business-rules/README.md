@@ -33,7 +33,8 @@ http://www.driveplaza.com/traffic/tolls_etc/
 
 ## 問題
 
-上記の業務ルールにしたがい、割引率を計算するインタフェースDiscountServiceを実装して下さい。
+上記の業務ルールにしたがい、割引率を計算する関数CalcDiscountを実装して下さい。
+ルールの時間帯は、走行記録の入出場時間が両方とも、その中に収まる場合のみ適用されます。
 
 ```ts
 type CalcDiscount = (drive: HighwayDrive) => Percentage;
